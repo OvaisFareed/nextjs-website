@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Moment from "react-moment";
 import { env } from "../../next.config";
 
 export const MainBlogLayout = ({ blog }) => {
@@ -19,14 +21,12 @@ export const MainBlogLayout = ({ blog }) => {
             <div className="blog-post-date ml-auto">
               <i className="far fa-clock"></i>
               <time dateTime={new Date(blog.createdAt).toDateString()}>
-                {new Date(blog.createdAt).toDateString()}
+                <Moment format="dddd, LL">{blog.createdAt}</Moment>
               </time>
             </div>
           </div>
           <h5 className="cmn-blog-title">
-            <a href="../post/is-billing-foreign-customers-in-their-local-currency-better/index.html">
-              {blog.title}
-            </a>
+            <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
           </h5>
           <div className="cmn-blog-description">{blog.content}</div>
         </div>
