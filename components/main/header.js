@@ -245,7 +245,7 @@ export const Header = () => {
                         </ul>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" href={"blog"}>
+                        <Link className="nav-link" href={"/blog"}>
                           Blog &amp; Press Room
                         </Link>
                       </li>

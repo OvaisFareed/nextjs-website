@@ -7,6 +7,10 @@ export const InputFormField = ({
   value,
   isRequired,
 }) => {
+  const handleChange = () => {
+    // Do Something
+  };
+
   return (
     <div className="form-group">
       <label>
@@ -21,6 +25,7 @@ export const InputFormField = ({
         placeholder={placeholder}
         type={type}
         value={value}
+        onChange={handleChange}
       />
       <span
         className="field-validation-valid errormessage"

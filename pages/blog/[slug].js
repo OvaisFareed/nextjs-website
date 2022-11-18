@@ -13,7 +13,7 @@ export default function BlogDetail({ blog }) {
       </>
     );
   } else {
-    return <>NAN</>;
+    return <h4>Error in getting blog details</h4>;
   }
 }
 
