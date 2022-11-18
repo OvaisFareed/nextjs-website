@@ -61,11 +61,12 @@ export const FAQ = () => {
                   return (
                     <div key={i} className="card">
                       <div
+                        id={`header${i}`}
                         className="card-header collapsed"
                         data-toggle="collapse"
                         data-target={`#accordion${i}`}
                         aria-expanded="false"
-                        aria-controls={`#accordion${i}`}
+                        aria-controls={`accordion${i}`}
                       >
                         <h5 className="">
                           <span className="accordian-arrow">
@@ -78,7 +79,8 @@ export const FAQ = () => {
                         </h5>
                       </div>
                       <div
-                        id={`#accordion${i}`}
+                        id={`accordion${i}`}
+                        aria-labelledby={`header${i}`}
                         className="collapse"
                         data-parent="#accordion"
                       >
