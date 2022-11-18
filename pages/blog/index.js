@@ -1,8 +1,39 @@
+import useSWR, { SWRConfig } from "swr";
 import { Banner } from "../../components/blog/banner";
 import { BlogContentLayout } from "../../components/blog/blog-content-layout";
 import { env } from "../../next.config";
 
-export default function Blog({ blogs }) {
+const API = `${env.strapiAPIBaseUrl}blogs?populate=*`;
+const fetcher = (apiUrl) =>
+  fetch(apiUrl, {
+    headers: {
+      Authorization: `Bearer ${env.authToken}`,
+    },
+  }).then((res) => res.json());
+
+export async function getServerSideProps() {
+  const repoInfo = await fetcher(API);
+  return {
+    props: {
+      fallback: {
+        [API]: repoInfo,
+      },
+    },
+  };
+}
+
+function BlogRenderer() {
+  const { data, error } = useSWR(API);
+  if (error) {
+    return <h4>Error in getting blogs</h4>;
+  }
+
+  if (!data) {
+    return <h4>Error in getting blogs</h4>;
+  }
+
+  const blogs = data.data;
+
   return (
     <>
       <Banner
@@ -20,26 +51,11 @@ export default function Blog({ blogs }) {
     </>
   );
 }
-export async function getServerSideProps() {
-  try {
-    const res = await fetch(`${env.strapiAPIBaseUrl}blogs?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${env.authToken}`,
-      },
-    });
 
-    const blogs = await res.json();
-
-    return {
-      props: {
-        blogs: blogs.data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        error,
-      },
-    };
-  }
+export default function Blog({ fallback }) {
+  return (
+    <SWRConfig value={{ fallback }}>
+      <BlogRenderer />
+    </SWRConfig>
+  );
 }
