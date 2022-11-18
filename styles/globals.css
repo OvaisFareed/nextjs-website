@@ -8651,3 +8651,7 @@ display: none;
 .cmn-banner-caption h1.caption-lg-text {
 text-transform: capitalize;
 }
+
+.max-width-275px {
+  max-width: 275px !important;
+}

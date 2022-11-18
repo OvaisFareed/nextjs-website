@@ -28,7 +28,9 @@ export const MainBlogLayout = ({ blog }) => {
           <h5 className="cmn-blog-title">
             <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
           </h5>
-          <div className="cmn-blog-description">{blog.content}</div>
+          <div className="cmn-blog-description text-truncate-3-lines">
+            {blog.content}
+          </div>
         </div>
       </div>
     </div>

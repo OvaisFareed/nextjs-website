@@ -24,7 +24,9 @@ export const SmallBlogLayout = ({ blog }) => {
           <h5 className="cmn-blog-title">
             <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
           </h5>
-          <div className="cmn-blog-description">{blog.content}</div>
+          <div className="cmn-blog-description text-truncate-3-lines max-width-275px">
+            {blog.content}
+          </div>
 
           <div className="blog-cat-post-right">
             <div className="blog-post-date ml-auto">

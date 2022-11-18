@@ -42,11 +42,15 @@ function BlogRenderer() {
         redirectLink="../register/index.html"
         bannerSource="/media/zyopoa5z/blog-press-room.jpg"
       />
-      <BlogContentLayout title="Blog" redirectLink="/blogs" blogs={blogs} />
+      <BlogContentLayout
+        title="Blog"
+        redirectLink="/blogs"
+        blogs={blogs.filter((blog) => blog.attributes.category == "Blog")}
+      />
       <BlogContentLayout
         title="Press Room"
         redirectLink="/pressroom"
-        blogs={blogs}
+        blogs={blogs.filter((blog) => blog.attributes.category == "Press Room")}
       />
     </>
   );
