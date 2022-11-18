@@ -23,7 +23,7 @@ export const Card = () => {
             value="true"
           />
           <input name="Daily" type="hidden" value="false" />
-          <label className="custom-control-label" for="want1">
+          <label className="custom-control-label" htmlFor="want1">
             Sign me up:
           </label>
         </div>

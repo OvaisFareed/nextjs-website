@@ -14,7 +14,7 @@ export const TermsAndCondition = ({ blog }) => {
               className="custom-control-input"
               id="aggree"
             />
-            <label className="custom-control-label" for="aggree">
+            <label className="custom-control-label" htmlFor="aggree">
               Yes, I agree to give MTFX authorization to contact me about the
               information on this page and other products, services, and
               promotions.
